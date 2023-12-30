@@ -5,16 +5,22 @@ This repo is an attempt to figure out the necessary
 directory layout to create a lua plugin for neovim that
 is installable with Lazy.nvim.
 
-The only thing it does is echo the following message::
+When you press ``<Leader>h``, it will print the message
+``"Hello, {name}"``, where name is the value of ``opts.name``.
 
-  plugin.nvim has been loaded
+Here is an example of how to install the plugin using lazy.nvim,
+and set the ``opts.name`` attribute to ``"Chris"``.
 
-To see it, run ``:messages``.
+::
 
-The file inside of the ``plugin`` directory will be
-run when nvim starts.
-
-The code in ``lua`` is library code. It can be required
-by the initialization code under ``plugin``.
+  require('lazy').setup({
+    {
+      'kingparra/plugin.nvim',
+      opts = {
+        name = "Chris",
+      }
+    },
+    ...
+    }
 
 See here for more: https://m4xshen.dev/posts/develop-a-neovim-plugin-in-lua/
